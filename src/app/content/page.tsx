@@ -12,7 +12,7 @@ export default function Page() {
   // const [content, setContent] = useState<string>(
   //   "Here is the original bish, <mark>highlight</mark> me all day"
   // );
-  const content = useRef(
+  const content: any = useRef(
     "Here is the original bish, <mark>highlight</mark> me all day"
   );
 
@@ -42,20 +42,28 @@ export default function Page() {
     }
   };
 
-  const highlightTextNode = (text: string, searchString: string): string => {
-    if (!searchString.trim()) {
-      return text;
-    }
+  const highlightTextNode = (
+    text: string,
+    searchStringArr: string[]
+  ): string => {
+    let output = "";
+    searchStringArr.forEach((searchString) => {
+      if (!searchString.trim()) {
+        return text;
+      }
 
-    const regex = new RegExp(`(${escapeRegExp(searchString)})`, "gi");
-    const parts = text.split(regex);
+      const regex = new RegExp(`(${escapeRegExp(searchString)})`, "gi");
+      const parts = text.split(regex);
 
-    const highlightedParts = parts.map((part, index) =>
-      regex.test(part) ? `<mark key=${index}>${part}</mark>` : part
-    );
+      const highlightedParts = parts.map((part, index) =>
+        regex.test(part) ? `<mark key=${index}>${part}</mark>` : part
+      );
 
-    // return renderToString(<>{highlightedParts.join("")}</>);
-    return highlightedParts.join("");
+      // return renderToString(<>{highlightedParts.join("")}</>);
+      let node = highlightedParts.join("");
+      output += node;
+    });
+    return output;
   };
 
   const enhanceText = () => {
@@ -68,7 +76,11 @@ export default function Page() {
         allowedTags: ["b", "i", "a", "p", "mark"],
         allowedAttributes: { a: ["href"] },
       };
-      const newNode = highlightTextNode(content.current, highlightedText[0]);
+      const newNode = highlightTextNode(content.current, highlightedText);
+      // const newNode = Highlighted({
+      //   text: content.current,
+      //   highlights: highlightedText,
+      // });
       content.current = newNode;
       console.log(newNode);
       // setContent(newNode);
@@ -81,7 +93,7 @@ export default function Page() {
     console.log("Updated highlightedText:", highlightedText);
     // enhanceText();
     enhanceText();
-  }, [highlightedText]);
+  }, [highlightedText, content]);
 
   return (
     <div>

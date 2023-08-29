@@ -1,4 +1,5 @@
 import { escapeRegExp } from "lodash";
+import { renderToString } from "react-dom/server";
 
 // const Highlighted = ({ text = "", highlight = "" }) => {
 //   if (!highlight.trim()) {
@@ -25,10 +26,10 @@ const Highlighted = ({ text = "", highlights = [] }) => {
     return <span>{text}</span>;
   }
 
-  let parts: React.ReactNode[] = [text];
+  let parts: any = [text];
   highlights.forEach((highlight) => {
     const regex = new RegExp(`(${escapeRegExp(highlight)})`, "gi");
-    parts.forEach((part, index) => {
+    parts.forEach((part: string, index: string | number) => {
       if (typeof part === "string") {
         const subparts = part.split(regex);
         parts[index] = subparts
