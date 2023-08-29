@@ -1,15 +1,22 @@
 import React from "react";
+import DOMPurify from "dompurify";
 import ContentEditable from "react-contenteditable";
+import { renderToString } from "react-dom/server";
 import "./style.css";
 import { ContentChangeEvent } from "../types";
 ("../types");
 
 interface AuthorAreaProps {
   handleHighlight: () => void;
-  content: string;
+  content: any;
   highlightedText: string[];
   onContentChange: (evt: ContentChangeEvent) => void;
 }
+
+const HTMLRenderer: React.FC<{ htmlContent: string }> = ({ htmlContent }) => {
+  const sanitizedHtml = DOMPurify.sanitize(htmlContent);
+  return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+};
 
 const AuthorArea: React.FC<AuthorAreaProps> = ({
   handleHighlight,
@@ -21,7 +28,7 @@ const AuthorArea: React.FC<AuthorAreaProps> = ({
     <ContentEditable
       onChange={onContentChange}
       onBlur={onContentChange}
-      html={content}
+      html={content.current}
       onMouseUp={handleHighlight}
     />
   );
