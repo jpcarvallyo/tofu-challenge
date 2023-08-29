@@ -22,23 +22,23 @@ export default function Page() {
   //   "Here is the original bish, <mark>highlight</mark> me all day"
   // );
 
-  const onContentChange = useCallback((evt) => {
-    // const sanitizeConf = {
-    //   allowedTags: ["b", "i", "a", "p", "mark"],
-    //   allowedAttributes: { a: ["href"], mark: ["key"] },
-    // };
-
-    // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
-    // setContent(evt.currentTarget.innerHTML);
-    // content.current = evt.currentTarget.innerHTML;
-    // content.current = evt.currentTarget.innerHTML;
-    enhanceText();
-  }, []);
+  const onContentChange = useCallback((evt) => {}, []);
   const handleHighlight = () => {
     const selection = window.getSelection();
     if (selection.anchorOffset !== selection.extentOffset) {
       const text = selection.toString();
-      setHighlightedText((prev) => [...prev, text]);
+      setHighlightedText((prev) => {
+        if (prev.find((item) => item === text)) {
+          return prev.filter((item) => item !== text);
+        } else {
+          return [...prev, text];
+        }
+      });
+      // setHighlightedText((prev) =>
+      //   !prev.findIndex(text)
+      //     ? [...prev, text]
+      //     : prev.filter((item) => item !== text)
+      // );
       console.log(highlightedText);
 
       // needs to generate a UUID
@@ -64,44 +64,17 @@ export default function Page() {
       text = node;
     }
     return text;
-    // searchStringArr.forEach((searchString) => {
-    //   if (!searchString.trim()) {
-    //     return text;
-    //   }
-
-    //   const regex = new RegExp(`(${escapeRegExp(searchString)})`, "gi");
-    //   const parts = text.split(regex);
-
-    //   const highlightedParts = parts.map((part, index) =>
-    //     regex.test(part) ? `<mark key=${index}>${part}</mark>` : part
-    //   );
-
-    //   // return renderToString(<>{highlightedParts.join("")}</>);
-    //   let node = highlightedParts.join("");
-    //   output += node;
-    // });
-    // return output;
   };
 
   const enhanceText = (text) => {
     if (highlightedText.length > 0) {
-      // const newNode = highlightedText.map((text) =>
-      //   highlightTextNode(content, text)
-      // );
-      // console.log(newNode);
       const sanitizeConf = {
         allowedTags: ["b", "i", "a", "p", "mark"],
         allowedAttributes: { a: ["href"] },
       };
       const newNode = highlightTextNode(text, highlightedText);
-      // const newNode = Highlighted({
-      //   text: content.current,
-      //   highlights: highlightedText,
-      // });
+
       setContent(newNode);
-      console.log(newNode);
-      // setContent(newNode);
-      // console.log(highlightTextNode(content, highlightedText[0]));
     } else {
       setContent(text);
     }
@@ -110,16 +83,6 @@ export default function Page() {
   useEffect(() => {
     // This needs to read what has been highlighted and then run the array of highlighted items with their corresponding UUID.
     console.log("Updated highlightedText:", highlightedText);
-    // enhanceText();
-    // console.log(responseData);
-    // if (responseData) {
-    //   const {
-    //     components: { fullContent },
-    //   } = responseData;
-    //   console.log(fullContent.text);
-    // }
-
-    // enhanceText();
   }, [highlightedText]);
 
   // const [data, setData] = useState([]);
