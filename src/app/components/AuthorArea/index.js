@@ -6,28 +6,30 @@ import "./style.css";
 import { ContentChangeEvent } from "../types";
 ("../types");
 
-interface AuthorAreaProps {
-  handleHighlight: () => void;
-  content: any;
-  highlightedText: string[];
-  onContentChange: (evt: ContentChangeEvent) => void;
-}
+// interface AuthorAreaProps {
+//   handleHighlight: () => void;
+//   content: any;
+//   highlightedText: string[];
+//   onContentChange: (evt: ContentChangeEvent) => void;
+//   onContentBlur:
+// }
 
-const HTMLRenderer: React.FC<{ htmlContent: string }> = ({ htmlContent }) => {
+const HTMLRenderer = ({ htmlContent }) => {
   const sanitizedHtml = DOMPurify.sanitize(htmlContent);
   return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
 };
 
-const AuthorArea: React.FC<AuthorAreaProps> = ({
+const AuthorArea = ({
   handleHighlight,
   content,
   highlightedText,
   onContentChange,
+  onContentBlur,
 }) => {
   return (
     <ContentEditable
       onChange={onContentChange}
-      onBlur={onContentChange}
+      onBlur={onContentBlur}
       html={content}
       onMouseUp={handleHighlight}
     />

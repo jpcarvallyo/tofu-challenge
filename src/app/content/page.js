@@ -22,7 +22,22 @@ export default function Page() {
   //   "Here is the original bish, <mark>highlight</mark> me all day"
   // );
 
-  const onContentChange = useCallback((evt) => {}, []);
+  const onContentChange = useCallback((evt) => {
+    // const sanitizeConf = {
+    //   allowedTags: ["b", "i", "a", "p", "mark"],
+    //   allowedAttributes: { a: ["href"], mark: ["key"] },
+    // };
+    // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
+  }, []);
+  const onContentBlur = useCallback((evt) => {
+    const sanitizeConf = {
+      allowedTags: ["b", "i", "a", "p", "mark"],
+      allowedAttributes: { a: ["href"], mark: ["key"] },
+    };
+    // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
+    // setContent(evt.currentTarget.innerHTML);
+    enhanceText(evt.currentTarget.innerHTML);
+  }, []);
   const handleHighlight = () => {
     const selection = window.getSelection();
     if (selection.anchorOffset !== selection.extentOffset) {
@@ -83,7 +98,7 @@ export default function Page() {
   useEffect(() => {
     // This needs to read what has been highlighted and then run the array of highlighted items with their corresponding UUID.
     console.log("Updated highlightedText:", highlightedText);
-  }, [highlightedText]);
+  }, [highlightedText, content]);
 
   // const [data, setData] = useState([]);
   const fetchData = () => {
@@ -113,6 +128,7 @@ export default function Page() {
           content={content}
           highlightedText={highlightedText}
           onContentChange={onContentChange}
+          onContentBlur={onContentBlur}
         ></AuthorArea>
       )}
 

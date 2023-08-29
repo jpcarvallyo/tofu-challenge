@@ -22,6 +22,14 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/content/page.js",
+    "src/app/utils/hooks/useApi.js",
+    "src/app/components/AuthorArea/index.js"
+  ],
   "exclude": ["node_modules"]
 }
