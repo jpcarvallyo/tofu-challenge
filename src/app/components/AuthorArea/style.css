@@ -1,0 +1,11 @@
+.highlightable-text {
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: text;
+}
+
+.highlighted-part {
+  background-color: yellow;
+  padding: 2px;
+  border-radius: 2px;
+}

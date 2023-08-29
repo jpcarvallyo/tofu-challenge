@@ -14,9 +14,19 @@
     "@types/react-dom": "18.2.7",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "lodash": "^4.17.21",
     "next": "13.4.19",
     "react": "18.2.0",
+    "react-contenteditable": "^3.3.7",
     "react-dom": "18.2.0",
+    "react-tooltip": "^5.21.1",
+    "sanitize-html": "^2.11.0",
+    "tippy.js": "^6.3.7",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.197",
+    "@types/sanitize-html": "^2.9.0",
+    "dotenv": "^16.3.1"
   }
 }
