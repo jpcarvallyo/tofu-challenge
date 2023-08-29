@@ -28,7 +28,7 @@ const AuthorArea: React.FC<AuthorAreaProps> = ({
     <ContentEditable
       onChange={onContentChange}
       onBlur={onContentChange}
-      html={content.current}
+      html={content}
       onMouseUp={handleHighlight}
     />
   );
