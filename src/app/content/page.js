@@ -1,36 +1,18 @@
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
 "use client";
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { renderToString } from "react-dom/server";
-import sanitizeHtml from "sanitize-html";
-import useApi from "../utils/hooks/useApi";
 import { makeAuthenticatedRequest } from "../utils/api";
 
 import { escapeRegExp } from "lodash";
 import AuthorArea from "../components/AuthorArea";
-import Highlighted from "../components/Highlight";
 
 export default function Page() {
   const [highlightedText, setHighlightedText] = useState([]);
   const [content, setContent] = useState(null);
   const [data, setData] = useState(null);
 
-  const onContentChange = useCallback((evt) => {
-    // const sanitizeConf = {
-    //   allowedTags: ["b", "i", "a", "p", "mark"],
-    //   allowedAttributes: { a: ["href"], mark: ["key"] },
-    // };
-    // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
-  }, []);
+  const onContentChange = useCallback((evt) => {}, []);
   const onContentBlur = useCallback((evt) => {
-    const sanitizeConf = {
-      allowedTags: ["b", "i", "a", "p", "mark"],
-      allowedAttributes: { a: ["href"], mark: ["key"] },
-    };
-    // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
-    // setContent(evt.currentTarget.innerHTML);
-    console.log(evt.currentTarget.innerHTML);
-    // enhanceText(evt.currentTarget.innerHTML);
     setContent(evt.currentTarget.innerHTML);
   }, []);
   const handleHighlight = () => {
@@ -39,11 +21,6 @@ export default function Page() {
       const text = selection.toString();
       setHighlightedText((prev) => {
         if (prev.find((item) => item === text)) {
-          // enhanceText(
-          //   text,
-          //   prev.filter((item) => item !== text)
-          // );
-
           highlightTextNode(
             content,
             prev.filter((item) => item !== text)
@@ -54,11 +31,7 @@ export default function Page() {
         }
       });
       setContent(removeMarkTagByUUIDUsingRegex(content, 1));
-      // setHighlightedText((prev) =>
-      //   !prev.findIndex(text)
-      //     ? [...prev, text]
-      //     : prev.filter((item) => item !== text)
-      // );
+
       console.log(highlightedText);
 
       // needs to generate a UUID
@@ -66,11 +39,9 @@ export default function Page() {
   };
 
   const highlightTextNode = (text, searchStringArr) => {
-    let output = "";
     if (searchStringArr.length === 0) {
       return text;
     }
-    // text = removeMarkTagByUUIDUsingRegex(text, 1);
     for (let i = 0; i < searchStringArr.length; i++) {
       const highPart = searchStringArr[i];
       const regex = new RegExp(`(${escapeRegExp(highPart)})`, "gi");
@@ -80,7 +51,6 @@ export default function Page() {
         regex.test(part) ? `<mark key=${index}>${part}</mark>` : part
       );
 
-      // return renderToString(<>{highlightedParts.join("")}</>);
       let node = highlightedParts.join("");
       text = node;
     }
@@ -97,7 +67,6 @@ export default function Page() {
 
   const enhanceText = (text) => {
     text = text || content;
-    // if (highlightedText.length > 0) {
     const sanitizeConf = {
       allowedTags: ["b", "i", "a", "p", "mark"],
       allowedAttributes: { a: ["href"] },
@@ -106,18 +75,12 @@ export default function Page() {
     console.log("Updated highlightedText:", highlightedText);
     console.log("inside enhance text");
     setContent(newNode);
-    // } else {
-    //   setContent(text);
-    // }
   };
 
-  // const [data, setData] = useState([]);
   const fetchData = () => {
     makeAuthenticatedRequest("GET", "content", "1521")
       .then((data) => {
-        // setResponseData(data);
         console.log(data[0]);
-        // setContent(data[0].components.fullContent.text);
         const text = data[0].components.fullContent.text;
         enhanceText(text);
         return data;
@@ -153,7 +116,6 @@ export default function Page() {
       )}
 
       <h1>{highlightedText}</h1>
-      {/* <Highlighted text={content} highlights={highlightedText}></Highlighted> */}
     </div>
   );
 }
