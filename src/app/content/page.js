@@ -14,6 +14,7 @@ export default function Page() {
   // const { responseData, error } = useApi("GET", "content", "1521");
   const [highlightedText, setHighlightedText] = useState([]);
   const [content, setContent] = useState(null);
+  const [data, setData] = useState(null);
   // if (error) {
   //   // Handle error
   //   return <div>Error: {error}</div>;
@@ -36,6 +37,7 @@ export default function Page() {
     };
     // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
     // setContent(evt.currentTarget.innerHTML);
+    console.log(evt.currentTarget.innerHTML);
     enhanceText(evt.currentTarget.innerHTML);
   }, []);
   const handleHighlight = () => {
@@ -82,13 +84,14 @@ export default function Page() {
   };
 
   const enhanceText = (text) => {
+    text = text || content;
     if (highlightedText.length > 0) {
       const sanitizeConf = {
         allowedTags: ["b", "i", "a", "p", "mark"],
         allowedAttributes: { a: ["href"] },
       };
       const newNode = highlightTextNode(text, highlightedText);
-
+      console.log("inside enhance text");
       setContent(newNode);
     } else {
       setContent(text);
@@ -97,8 +100,9 @@ export default function Page() {
 
   useEffect(() => {
     // This needs to read what has been highlighted and then run the array of highlighted items with their corresponding UUID.
+    enhanceText();
     console.log("Updated highlightedText:", highlightedText);
-  }, [highlightedText, content]);
+  }, [highlightedText]);
 
   // const [data, setData] = useState([]);
   const fetchData = () => {
@@ -109,6 +113,7 @@ export default function Page() {
         // setContent(data[0].components.fullContent.text);
         const text = data[0].components.fullContent.text;
         enhanceText(text);
+        return data;
       })
       .catch((error) => {
         // setError(error);
@@ -116,8 +121,10 @@ export default function Page() {
   };
 
   useEffect(() => {
-    fetchData();
-  });
+    if (!data) {
+      setData(fetchData());
+    }
+  }, [data]);
 
   return (
     <div>
