@@ -11,17 +11,9 @@ import AuthorArea from "../components/AuthorArea";
 import Highlighted from "../components/Highlight";
 
 export default function Page() {
-  // const { responseData, error } = useApi("GET", "content", "1521");
   const [highlightedText, setHighlightedText] = useState([]);
   const [content, setContent] = useState(null);
   const [data, setData] = useState(null);
-  // if (error) {
-  //   // Handle error
-  //   return <div>Error: {error}</div>;
-  // }
-  // const content = useRef(
-  //   "Here is the original bish, <mark>highlight</mark> me all day"
-  // );
 
   const onContentChange = useCallback((evt) => {
     // const sanitizeConf = {
@@ -46,11 +38,21 @@ export default function Page() {
       const text = selection.toString();
       setHighlightedText((prev) => {
         if (prev.find((item) => item === text)) {
+          // enhanceText(
+          //   text,
+          //   prev.filter((item) => item !== text)
+          // );
+
+          highlightTextNode(
+            content,
+            prev.filter((item) => item !== text)
+          );
           return prev.filter((item) => item !== text);
         } else {
           return [...prev, text];
         }
       });
+      setContent(removeMarkTagByUUIDUsingRegex(content, 1));
       // setHighlightedText((prev) =>
       //   !prev.findIndex(text)
       //     ? [...prev, text]
@@ -67,6 +69,7 @@ export default function Page() {
     if (searchStringArr.length === 0) {
       return text;
     }
+    // text = removeMarkTagByUUIDUsingRegex(text, 1);
     for (let i = 0; i < searchStringArr.length; i++) {
       const highPart = searchStringArr[i];
       const regex = new RegExp(`(${escapeRegExp(highPart)})`, "gi");
@@ -83,26 +86,29 @@ export default function Page() {
     return text;
   };
 
+  function removeMarkTagByUUIDUsingRegex(htmlString, targetUUID) {
+    const regex = new RegExp(
+      `<mark key=["']?\\\\?"?${targetUUID}\\\\?"?>(.*?)<\\/mark>`,
+      "g"
+    );
+    return htmlString.replace(regex, "$1");
+  }
+
   const enhanceText = (text) => {
     text = text || content;
-    if (highlightedText.length > 0) {
-      const sanitizeConf = {
-        allowedTags: ["b", "i", "a", "p", "mark"],
-        allowedAttributes: { a: ["href"] },
-      };
-      const newNode = highlightTextNode(text, highlightedText);
-      console.log("inside enhance text");
-      setContent(newNode);
-    } else {
-      setContent(text);
-    }
-  };
-
-  useEffect(() => {
-    // This needs to read what has been highlighted and then run the array of highlighted items with their corresponding UUID.
-    enhanceText();
+    // if (highlightedText.length > 0) {
+    const sanitizeConf = {
+      allowedTags: ["b", "i", "a", "p", "mark"],
+      allowedAttributes: { a: ["href"] },
+    };
+    const newNode = highlightTextNode(text, highlightedText);
     console.log("Updated highlightedText:", highlightedText);
-  }, [highlightedText]);
+    console.log("inside enhance text");
+    setContent(newNode);
+    // } else {
+    //   setContent(text);
+    // }
+  };
 
   // const [data, setData] = useState([]);
   const fetchData = () => {
@@ -125,6 +131,12 @@ export default function Page() {
       setData(fetchData());
     }
   }, [data]);
+
+  useEffect(() => {
+    // This needs to read what has been highlighted and then run the array of highlighted items with their corresponding UUID.
+    enhanceText();
+    console.log("Updated highlightedText:", highlightedText);
+  }, [highlightedText]);
 
   return (
     <div>
