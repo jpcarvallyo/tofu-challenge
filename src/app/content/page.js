@@ -30,7 +30,8 @@ export default function Page() {
     // setContent(sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf));
     // setContent(evt.currentTarget.innerHTML);
     console.log(evt.currentTarget.innerHTML);
-    enhanceText(evt.currentTarget.innerHTML);
+    // enhanceText(evt.currentTarget.innerHTML);
+    setContent(evt.currentTarget.innerHTML);
   }, []);
   const handleHighlight = () => {
     const selection = window.getSelection();
