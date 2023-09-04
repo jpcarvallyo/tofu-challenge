@@ -1,16 +1,18 @@
 ## Getting Started
 
-Thank you again for the opportunity to be part of Tofu, I put my heart into this submission. I am excited to bring my experience and expertise to the team.
+Thank you again for the opportunity to be part of Tofu, I put my heart into this submission. I am excited about the prospect of bringing my experience and expertise to the team and helping in any way I could.
 
 ## How to start the application
 
 1. To start you'll need to create a .env file and populate the NEXT_PUBLIC_BEARER_TOKEN variable with the bearer token.
 
-2. In the terminal, you'll have to run npm install to install packages.
+2. In the terminal, you'll have to run **npm install** to install packages.
 
-3. Run npm run build
+3. Run **npm run build**
 
-4. You can run npm run start.
+4. You can **run npm run start**
+
+5. You'll need to then head to http://localhost:3000/content in order to see the application.
 
 ## What went well
 
