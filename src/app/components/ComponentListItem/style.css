@@ -1,0 +1,55 @@
+.close {
+  width: 32px;
+  height: 100%;
+  padding: 0px 6px 0px 6px;
+  border: 1px solid #d1d5db;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #94a3b8;
+}
+
+.componentlistItem {
+  border-top: 1px solid #d1d5db;
+  display: flex;
+  padding: 10px 5px;
+  color: #334155;
+  padding-right: 0;
+  position: relative;
+}
+
+.componentlistItem::after {
+  content: ""; /* Empty content */
+  position: absolute;
+  top: 0;
+  right: 28px; /* Adjust this value to control the distance from the element */
+  height: 100%; /* Adjust the height as needed */
+  width: 1px; /* Width of the vertical line */
+  background-color: #d1d5db; /* Color of the line */
+}
+
+.componentlistItem p {
+  margin: 0 5px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid #d1d5db;
+  cursor: pointer;
+}
+
+div.iconContainer .closeIcon {
+  height: 14px;
+  width: 14px;
+  padding: 0 7px;
+}
+
+.componentlistItem .textCtn {
+  flex-grow: 1;
+}

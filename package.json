@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.7",
+    "@mui/material": "^5.14.7",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -21,10 +25,12 @@
     "react": "18.2.0",
     "react-contenteditable": "^3.3.7",
     "react-dom": "18.2.0",
+    "react-tag-input-component": "^2.0.2",
     "react-tooltip": "^5.21.1",
     "sanitize-html": "^2.11.0",
     "tippy.js": "^6.3.7",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/dompurify": "^3.0.2",

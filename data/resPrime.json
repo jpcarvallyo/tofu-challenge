@@ -1,0 +1,117 @@
+{
+  "id": 1521,
+  "creator": 100,
+  "playbook": 92,
+  "campaign": null,
+  "content_group": null,
+  "content_name": "Test Content",
+  "content_params": {
+    "assets": {},
+    "targets": {},
+    "content_type": "Landing Page",
+    "content_source": "",
+    "prompt_overrides": {},
+    "content_source_copy": "/api/web/storage/s3-presigned-url?file=1ff04d03-08ba-11c7-209c-eb8cce8084cb-Test Content.json&fileType=application/json&directory=tofu-uploaded-files",
+    "custom_instructions": [],
+    "content_source_format": "Text",
+    "content_source_upload_method": "Text"
+  },
+  "components": {
+    "11712e1b-60df-4760-bc61-0971aac1fc4d": {
+      "meta": { "precedingContent": "", "succeedingContent": "" },
+      "text": "Take this opportunity to explore the next big things in technology, finance, sustainability, and beyond!"
+    },
+    "c9fb351d-21ce-4636-82cc-6047b3a12396": {
+      "meta": { "precedingContent": "", "succeedingContent": "" },
+      "text": "Check out our new collection of the most trending companies in eight diverse categories. "
+    }
+  },
+  "latest_variation_tag": "v1",
+  "updated_at": "2023-08-30T00:27:40.918416-07:00",
+  "created_at": "2023-08-01T11:05:55.942655-07:00",
+  "results": [
+    {
+      "id": 18202,
+      "params": {
+        "targets": { "Persona": "CEO" },
+        "content_type": "Text",
+        "num_of_variations": 3,
+        "custom_instructions": ["Use a neutral tone for the output."]
+      },
+      "variations": {
+        "fullContent": {
+          "meta": {
+            "variations": [
+              {
+                "meta": {
+                  "gen_runtime": 1.9319502865000686,
+                  "runtime_seconds": 1.9330624775066099,
+                  "postprocess_runtime": 0.0011121910065412521
+                },
+                "text": "Thank you for giving us the opportunity to help you drive ROI, revenue, growth, and brand"
+              },
+              {
+                "meta": {
+                  "gen_runtime": 1.9319502865000686,
+                  "runtime_seconds": 1.9330624775066099,
+                  "postprocess_runtime": 0.0011121910065412521
+                },
+                "text": "Thank you for considering a trial with us. Experience the power of AI to drive revenue growth and enhance your brand"
+              },
+              {
+                "meta": {
+                  "gen_runtime": 1.9319502865000686,
+                  "runtime_seconds": 1.9330624775066099,
+                  "postprocess_runtime": 0.0011121910065412521
+                },
+                "text": "Thank you for trying our trial. Experience the power of boosting your ROI, revenue, and brand growth with AI"
+              }
+            ],
+            "preceedingContent": "",
+            "succeedingContent": "",
+            "current_variation_index": 0
+          },
+          "text": "Thank you doing a trial with us.<div><br></div><div>Experience the power of using AI to generate all your marketing messages in one simple go.</div>"
+        },
+        "237425aa-b3df-4606-9ff8-7c1b149a8dd0": {
+          "meta": {
+            "variations": [
+              {
+                "meta": {
+                  "gen_runtime": 1.9319502865000686,
+                  "runtime_seconds": 1.9321997504994215,
+                  "postprocess_runtime": 0.00024946399935288355
+                },
+                "text": "Unlock the potential of AI to drive your company's ROI, revenue, growth, and brand."
+              },
+              {
+                "meta": {
+                  "gen_runtime": 1.9319502865000686,
+                  "runtime_seconds": 1.9321997504994215,
+                  "postprocess_runtime": 0.00024946399935288355
+                },
+                "text": "Unlock the potential of AI to drive ROI, revenue growth, and brand recognition."
+              },
+              {
+                "meta": {
+                  "gen_runtime": 1.9319502865000686,
+                  "runtime_seconds": 1.9321997504994215,
+                  "postprocess_runtime": 0.00024946399935288355
+                },
+                "text": "Unlock the potential of AI to drive ROI, revenue growth and strengthen your brand."
+              }
+            ],
+            "preceedingContent": "",
+            "succeedingContent": "",
+            "current_variation_index": 0
+          },
+          "text": "Experience the power of using AI to generate all your marketing messages in one simple go."
+        }
+      },
+      "tag": "v1",
+      "updated_at": "2023-08-30T00:27:40.925551-07:00",
+      "created_at": "2023-08-30T00:27:40.925313-07:00",
+      "content": 1521
+    }
+  ]
+}

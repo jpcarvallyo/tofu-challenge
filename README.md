@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+Thank you again for the opportunity to be part of Tofu, I put my heart into this submission. I am excited to bring my experience and expertise to the team.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## How to start the application
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. To start you'll need to create a .env file and populate the NEXT_PUBLIC_BEARER_TOKEN variable with the bearer token.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. In the terminal, you'll have to run npm install to install packages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Run npm run build
 
-## Learn More
+4. You can run npm run start.
 
-To learn more about Next.js, take a look at the following resources:
+## What went well
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I am happy that basic updates to the text, highlighting and dehighlighting work as well as the UI looking true to the mock up. I even added little touches here and there to add polish to it and to encourage a great user experience. I went ahead and added the additional optional features like custom prompts and a select element that contained the targets. I added ordering to the components so the user doesn't get confused or make mistakes when deleting/dehighlighting components. I am very happy with the way the UI handles the POST calls and the PATCH calls. I went with highlighting the text with the cursor and have it show instantly, that was cool.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## What didn't go well
 
-## Deploy on Vercel
+The highlighting and dehighlighting was particuarly tough as I needed to get the shape of the patch when updating the content and the components. I didn't want to introduce duplicates or have text removed. This was challenging at times but I managed. I would like to improve parts of the code that were repetitive, particularly the removing of hightling/components. If I had more time I would most certainly move some of that logic into a function(s) that would live in the utility methods.js file I created for that stuff. I also was confused a little about the exact shape of the patch call and went down the wrong path a bit due to misinterpretation and making particular assumptions, so I burned some time there. I tried to squash every bug, but I wanted to sandbox the exercise.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## What did I learn
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I also learned that Tofu is doing some really cool things and it was evident by the time I was playing with the generate POST call. It was really fun playing with the custom prompts and the targets. I was blown away by the responses. This makes me even more enthusiastic about AI and what the future holds. Tofu is inspiring me to play more with AI and to partake in this dance.
+
+## Suggestions to make user experience better
+
+I would add coaching tips when the user initially interacts with the application and then not show it when the user selects do not show again. I think that would be nice so the user could understand what is possible and what to do. If I were to redo the application, I may go with slate.js as it's similar to Notion and the experience is decent.
+
+## Feedback about the API endpoints
+
+I thought the endpoints were great. Maybe if there were multiple collaborators in the future, using websockets would be a decent idea. For me however the experience was fun and wonderful.
+
+## Thank you

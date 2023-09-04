@@ -1,0 +1,22 @@
+#results button.resultsBtn {
+  max-width: 320px;
+  min-width: 306px;
+  height: 36px;
+  border-radius: 3px;
+  border: 0.5px solid rgba(220, 223, 228, 1);
+  background-color: white;
+  flex-grow: 1;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.resultBtnCtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#results button.resultsBtn.active {
+  border: 0.5px solid rgba(168, 228, 15, 1);
+}

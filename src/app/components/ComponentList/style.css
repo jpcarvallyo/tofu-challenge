@@ -1,0 +1,68 @@
+#componentListCtn {
+  display: flex;
+  flex-direction: column;
+}
+
+div.componentHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+}
+
+div#components {
+  border-radius: 2px;
+  border: 1px solid #d1d5db;
+  border-top: 0;
+}
+
+div#components:first-child {
+  border-top: 0;
+}
+
+.infoSection {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border-radius: 2px;
+  padding: 10px 12px;
+  height: 56px;
+  margin-bottom: 4px;
+}
+
+.infoSection p {
+  font-size: 14px;
+  margin: 0;
+}
+
+#infoIcon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.clickable-component {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.clickable-component.open div.drawer-content {
+  max-height: 500px; /* Adjust the height as needed */
+}
+
+.icon {
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
+
+.open .icon {
+  transform: rotate(0deg);
+}

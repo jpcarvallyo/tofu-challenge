@@ -1,0 +1,33 @@
+.rti--input {
+  font-size: 12px;
+  line-height: inherit;
+  width: 55%;
+}
+
+.customPrompts em {
+  font-size: 13px;
+}
+
+.customPrompts input {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+::-webkit-input-placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+::-moz-placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+:-ms-input-placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+::placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+.rti--tag {
+  font-size: 14px;
+}

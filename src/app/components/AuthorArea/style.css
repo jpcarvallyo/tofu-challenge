@@ -4,8 +4,27 @@
   cursor: text;
 }
 
-.highlighted-part {
-  background-color: yellow;
+mark {
+  background-color: var(--highligher-pink);
   padding: 2px;
   border-radius: 2px;
+}
+
+#authorArea {
+  margin-left: 50px;
+  background-color: #f8f8f8;
+  border: 1px solid #d1d5db;
+  padding: 38px;
+  padding-top: 60px;
+
+  width: 100%;
+
+  border-radius: 5px;
+  line-height: 22.5px;
+  color: #595959;
+  position: relative;
+
+  display: flex;
+  flex-grow: 1;
+  padding-bottom: 0;
 }

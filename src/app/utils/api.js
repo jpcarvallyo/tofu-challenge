@@ -1,7 +1,34 @@
-// utils/api.js
-
 import axios from "axios";
 import { API_BASE_URL, BEARER_TOKEN } from "../../config";
+
+export const patchContent = async (data) => {
+  try {
+    const response = await makeAuthenticatedRequest(
+      "PATCH",
+      "content/1521",
+      data
+    );
+    return response;
+  } catch (error) {
+    console.error("API request error:", error);
+    throw error;
+  }
+};
+
+export const postResults = async (data) => {
+  try {
+    const response = await makeAuthenticatedRequest(
+      "POST",
+      "content/1521/gen/",
+      data
+    );
+
+    return response;
+  } catch (error) {
+    console.error("API request error:", error);
+    throw error;
+  }
+};
 
 export const makeAuthenticatedRequest = async (
   method,
@@ -20,7 +47,6 @@ export const makeAuthenticatedRequest = async (
 
     return response.data;
   } catch (error) {
-    // Handle error
     console.error("API request error:", error);
     throw error;
   }
